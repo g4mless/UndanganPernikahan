@@ -10,6 +10,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,6 +25,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage // Example using Coil
 import com.undangan.pernikahan.ui.theme.UndanganPernikahanTheme
+import com.undangan.pernikahan.ui.theme.greatVibesFamily
+import com.undangan.pernikahan.ui.theme.loraFamily
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,8 +34,18 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             UndanganPernikahanTheme {
+                @OptIn(ExperimentalMaterial3Api::class)
                 Scaffold(
-                    topBar = { /* Your TopAppBar if needed */ },
+                    topBar = {
+                        TopAppBar(
+                            title = {
+                                Text(
+                                    text = "Undangan Pernikahan",
+                                    modifier = Modifier.fillMaxWidth()
+                                )
+                            }
+                        )
+                    },
                     modifier = Modifier.fillMaxSize()
                 ) { innerPadding ->
                     WeddingInvitationScreen(modifier = Modifier.padding(innerPadding))
@@ -52,11 +65,11 @@ fun WeddingInvitationScreen(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(24.dp)
     ) {
-        Text(
-            text = "Bersama Ini Kami Mengundang Anda",
-            style = MaterialTheme.typography.headlineSmall,
-            textAlign = TextAlign.Center
-        )
+        //Text(
+        //    text = "Bersama Ini Kami Mengundang Anda",
+        //    style = MaterialTheme.typography.headlineSmall,
+        //    textAlign = TextAlign.Center
+        //)
 
         AsyncImage(
             model = R.drawable.ic_launcher_foreground, // Replace with your actual image
@@ -69,21 +82,26 @@ fun WeddingInvitationScreen(modifier: Modifier = Modifier) {
         )
 
         Text(
-            text = "Nama Mempelai Pria\n&\nNama Mempelai Wanita",
-            style = MaterialTheme.typography.displaySmall,
-            fontWeight = FontWeight.Bold,
+            text = "Nama Anda\n&\nNama Istri Anda",
+            style = MaterialTheme.typography.displaySmall.copy(
+                fontFamily = greatVibesFamily
+            ),
             textAlign = TextAlign.Center,
             lineHeight = MaterialTheme.typography.displaySmall.fontSize * 1.2
         )
 
-        Divider(modifier = Modifier.padding(vertical = 8.dp))
+        HorizontalDivider(
+            modifier = Modifier.padding(vertical = 8.dp),
+            thickness = DividerDefaults.Thickness,
+            color = DividerDefaults.color
+        )
 
-        EventDetailItem(label = "Tanggal Acara:", value = "Sabtu, 14 Desember 2024")
+        EventDetailItem(label = "Tanggal Acara:", value = "Minggu, 21 September 2025")
         EventDetailItem(label = "Waktu:", value = "10:00 WIB - Selesai")
         EventDetailItem(label = "Lokasi:", value = "Gedung Serbaguna ABC\nJl. Merdeka No. 1, Jakarta")
 
         Text(
-            text = "Kehadiran Anda adalah kebahagiaan bagi kami.",
+            text = "Atas kehadiran dan doa restunya, kami ucapkan terima kasih.",
             style = MaterialTheme.typography.bodyMedium,
             textAlign = TextAlign.Center
         )
@@ -95,12 +113,16 @@ fun EventDetailItem(label: String, value: String) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text(
             text = label,
-            style = MaterialTheme.typography.titleMedium,
+            style = MaterialTheme.typography.titleMedium.copy(
+                fontFamily = loraFamily
+            ),
             fontWeight = FontWeight.SemiBold
         )
         Text(
             text = value,
-            style = MaterialTheme.typography.bodyLarge,
+            style = MaterialTheme.typography.bodyLarge.copy(
+                fontFamily = loraFamily
+            ),
             textAlign = TextAlign.Center
         )
     }
