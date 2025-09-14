@@ -19,7 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage // Example using Coil
+import coil.compose.AsyncImage // Coil for handling image
 import com.undangan.pernikahan.ui.theme.UndanganPernikahanTheme
 import com.undangan.pernikahan.ui.theme.greatVibesFamily
 import com.undangan.pernikahan.ui.theme.loraFamily
@@ -81,14 +81,14 @@ fun WeddingInvitationScreen(modifier: Modifier = Modifier) {
         )
 
         HorizontalDivider(
-            modifier = Modifier.padding(vertical = 8.dp),
+            modifier = Modifier.padding(vertical = 4.dp),
             thickness = DividerDefaults.Thickness,
             color = DividerDefaults.color
         )
 
         EventDetailItem(label = "Tanggal Acara:", value = "Minggu, 21 September 2025")
         EventDetailItem(label = "Waktu:", value = "10:00 WIB - Selesai")
-        EventDetailItem(label = "Lokasi:", value = "Gedung Serbaguna ABC\nJl. Merdeka No. 1, Jakarta")
+        EventDetailItem(label = "Lokasi:", value = "Gedung Halu\nJl. Halu No. 1, Jakarta")
 
         Text(
             text = "Atas kehadiran dan doa restunya, kami ucapkan terima kasih.",
