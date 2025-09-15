@@ -58,7 +58,7 @@ fun WeddingInvitationScreen(modifier: Modifier = Modifier) {
             .verticalScroll(rememberScrollState())
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(24.dp)
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         AsyncImage(
             model = R.drawable.my_istri,
@@ -91,7 +91,9 @@ fun WeddingInvitationScreen(modifier: Modifier = Modifier) {
 
         Text(
             text = "Atas kehadiran dan doa restunya, kami ucapkan terima kasih.",
-            style = MaterialTheme.typography.bodyMedium,
+            style = MaterialTheme.typography.bodyMedium.copy(
+                fontFamily = loraFamily
+            ),
             textAlign = TextAlign.Center
         )
     }
